@@ -49,3 +49,7 @@ body {
   object-fit: cover;
   border-radius: 100px;
 }
+
+.input-group-text{
+  width: 120px;
+}

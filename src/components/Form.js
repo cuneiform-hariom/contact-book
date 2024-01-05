@@ -16,7 +16,10 @@ export default function Form() {
         name: '',
         email: '',
         phone: '',
-        image: null
+        image: null,
+        facebook: '',
+        twitter: '',
+        instagram: '',
     }
 
     const formSchema = Yup.object().shape({
@@ -57,11 +60,11 @@ export default function Form() {
     return (
         <>
             <form className='form p-3' onSubmit={formik.handleSubmit}>
-                <h5 className="text-center">Add Detail</h5>
                 <div className="container">
+                    <h5 className="text-center">Add Detail</h5>
                     <div className="row">
                         <div className="col-md-7">
-                            <div className='mt-4'>
+                            <div>
                                 <label htmlFor="name">Name: {formik.touched.name && formik.errors.name && <span className='text-danger'>{formik.errors.name}</span>}
                                 </label>
                                 <input
@@ -119,10 +122,50 @@ export default function Form() {
                             </div>
                             {formik.touched.image && formik.errors.image && <span className='text-danger'>{formik.errors.image}</span>}
                         </div>
-                        <div className='mt-4'>
-                            <button className='btn btn-primary' type="submit">Save</button>
-                        </div>
                     </div>
+                </div>
+                <div className="container mt-4">
+                    <h5 className="text-center">Social Links</h5>
+
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">facebook</span>
+                        <input
+                            type="url"
+                            name="facebook"
+                            id="facebook"
+                            className='form-control'
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.facebook}
+                        />
+                    </div>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">twitter</span>
+                        <input
+                            type="url"
+                            name="instagram"
+                            id="instagram"
+                            className='form-control'
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.instagram}
+                        />
+                    </div>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">instagram</span>
+                        <input
+                           type="url"
+                           name="twitter"
+                           id="twitter"
+                           className='form-control'
+                           onChange={formik.handleChange}
+                           onBlur={formik.handleBlur}
+                           value={formik.values.twitter}
+                        />
+                    </div>
+                </div>
+                <div className='container mt-4'>
+                    <button className='btn btn-primary' type="submit">Save</button>
                 </div>
             </form>
 
@@ -153,8 +196,15 @@ export default function Form() {
                                                 </div>
                                             </div>
                                         </div>
+                                        <div className="container my-4">
+                                            <div className="d-flex gap-3">
+                                                <a href={data.facebook} className='btn btn-primary btn-sm'>facebook</a >
+                                                <a href={data.instagram} className='btn btn-primary btn-sm'>instagram</a>
+                                                <a href={data.twitter
+                                                } className='btn btn-primary btn-sm'>twitter</a>
+                                            </div>
+                                        </div>
                                         <div className="d-flex p-2 gap-3">
-                                            <button className='btn btn-primary btn-sm'>Edit</button>
                                             <button className='btn btn-primary btn-sm' onClick={() => { handleDelete(index) }}>Delete</button>
                                         </div>
                                     </div>
